@@ -1,0 +1,20 @@
+{% extends "my_pages/base.html" %}
+
+{% block page-title %}
+{{ category.name }}:{{ category.posts.item }}
+{% endblock %}
+
+{% block content %}
+<h2 >Item: {{ post.item }} </h2>
+<h2>Description: {{ post.detail }}</h2>
+
+<hr>
+<a href="{% url 'post_edit' category_id=category.id post_id=post.id%"><button>Edit Post</button></a>
+
+<form name="delete_category" method="POST" action="{% url 'post_delete' category_id=category.id post_id=post.id %}">
+  {% csrf_token %}
+  <input type="submit" value="Delete post" />
+</form>
+<hr>
+
+{% endblock %} 

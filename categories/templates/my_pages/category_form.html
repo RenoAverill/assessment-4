@@ -1,0 +1,29 @@
+{% extends 'my_pages/base.html' %}
+
+{% block title %} 
+{% if create_or_update %}
+Create Category
+{% else %}
+Update Category: {{ category.name }}
+{% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+<hr>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+        <button type="submit">
+            {% if create_or_update %}
+            Add Category
+            {% else %}
+            Update Category
+            {% endif %}
+        </button> 
+</form>
+{% endblock %} 

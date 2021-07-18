@@ -1,0 +1,18 @@
+{% extends 'my_pages/base.html' %}
+
+{% block title %}Category: {{ category.name }}{% endblock %}
+
+{% block content %}
+<hr>
+<form name="category_delete" method="POST" action="{% url 'category_delete' category_id=category.id %}">
+  {% csrf_token %}
+  <input type="submit" value="Delete category" />
+</form>
+
+<a href="{% url 'category_edit' category_id=category.id %}"><button>Edit Category</button></a>
+<h4>Posts:</h4>
+
+<a href="{% url 'post_list' category_id=category.id %}">Posts in this category</a>
+  
+<hr>
+{% endblock %} 
